@@ -26,16 +26,17 @@ def display_camera_feeds(world, vehicle):
     bounding_box = vehicle.bounding_box
     vehicle_size = bounding_box.extent.x, bounding_box.extent.y, bounding_box.extent.z
     camera_positions = {
-        'Front': carla.Transform(carla.Location(x=vehicle_size[0] * 1.5, z=vehicle_size[2])),
-        'Back': carla.Transform(carla.Location(x=-vehicle_size[0] * 1.5, z=vehicle_size[2]), carla.Rotation(yaw=180)),
         'Front Left': carla.Transform(carla.Location(x=vehicle_size[0], y=-vehicle_size[1], z=vehicle_size[2]),
-                                      carla.Rotation(yaw=45)),
+                                      carla.Rotation(yaw=-45)),
+        'Front': carla.Transform(carla.Location(x=vehicle_size[0] * 1.5, z=vehicle_size[2])),
+
         'Front Right': carla.Transform(carla.Location(x=vehicle_size[0], y=vehicle_size[1], z=vehicle_size[2]),
-                                       carla.Rotation(yaw=-45)),
+                                       carla.Rotation(yaw=45)),
         'Back Left': carla.Transform(carla.Location(x=-vehicle_size[0], y=-vehicle_size[1], z=vehicle_size[2]),
-                                     carla.Rotation(yaw=135)),
+                                     carla.Rotation(yaw=-133)),
+        'Back': carla.Transform(carla.Location(x=-vehicle_size[0] * 1.5, z=vehicle_size[2]), carla.Rotation(yaw=180)),
         'Back Right': carla.Transform(carla.Location(x=-vehicle_size[0], y=vehicle_size[1], z=vehicle_size[2]),
-                                      carla.Rotation(yaw=-135)),
+                                      carla.Rotation(yaw=133))
     }
 
     image_buffers = {}
